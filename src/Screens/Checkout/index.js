@@ -7,14 +7,27 @@ import ProductsActions from '../../Redux/ActionsAndReducers/Products'
 import Button from 'react-bootstrap/Button';
 // Services
 import Navigate from '../../Services/Navigate';
+import { setIcon } from '../../Services/Utils';
 // Components
+import ProductView from './ProductView';
 import EmptyPlaceholder from '../../Components/EmptyPlaceholder';
 import { FormLayout, FormItem } from '../../Components/Form';
 import ProductQuantityControler from '../../Components/ProductQuantityControler';
 import Card from '../../Components/Card';
-import { setIcon } from '../../Services/Utils';
-
+import Modal from '../../Components/Modal';
 class ProductList extends Component {
+  state = {
+    openDialog: false
+  };
+
+  initiateReviewMode = () => {
+    this.setState({ openDialog: true })
+  }
+
+  closeDialog = () => {
+    this.setState({ openDialog: false })
+  }
+
   toggleView = () => {
     const { toggleView } = this.props;
 
@@ -27,12 +40,42 @@ class ProductList extends Component {
     removeProduct(id);
   }
 
+  get totaPrice() {
+    const { products } = this.props.productsStore;
+
+    return products.reduce((result, { quantity, price }) => result += price * quantity, 0)
+  }
+
   render() {
     const { products } = this.props.productsStore;
     const { isListView } = this.props;
+    const { openDialog } = this.state;
 
     return (
       <FormLayout>
+        <Modal
+          title={'Review Order'}
+          show={openDialog}
+          handleClose={this.closeDialog}
+          backdrop
+          actions={
+            <Button
+              block
+              onClick={() => {
+                this.closeDialog()
+                Navigate.go(`/contact`)
+              }}
+              variant={'outline-danger'}
+            >
+              Total price is: {this.totaPrice} $ Order Now!
+            </Button>
+          }
+        >
+          <FormLayout>
+            {products.map((product, i) => <ProductView product={product} key={i} /> )}
+          </FormLayout>
+        </Modal>
+
         {!products.length ? 
           <EmptyPlaceholder width={50} text={'No Selected Products Found'} />
           :
@@ -42,7 +85,7 @@ class ProductList extends Component {
                 <h4 className='theme_color m-0'>Cart</h4>
                 <Button
                   variant='success'
-                  onClick={this.toggleView}
+                  onClick={this.initiateReviewMode}
                 >
                   {'Review Order!'}
                 </Button>
@@ -55,13 +98,14 @@ class ProductList extends Component {
             </FormItem>
 
             {products.map(product => (
-              <FormItem fullWidth={isListView} lg={3} xl={3}>
+              <FormItem fullWidth={isListView} lg={4} xl={4}>
                 <Card 
                   key={product.id}
                   imgSrc={product.image}
                   title={product.title}
                   cardStyles='white_background'
                   footer={(
+                    <>
                     <Button 
                       onClick={() => this.removeProduct(product.id)}
                       variant={'outline-danger'}
@@ -74,6 +118,15 @@ class ProductList extends Component {
                         alt='delete product'
                       />
                     </Button>
+
+                    <Button 
+                      onClick={() => Navigate.go(`/product/${product.id}`)}
+                      variant={'outline-secondary'}
+                      className='mr-2'
+                    >
+                      Details
+                    </Button>
+                    </>
                   )}
                 >
                   <div className='d-flex align-items-baseline'>

@@ -18,5 +18,6 @@ new HttpMiddleware(Ibtkar);
 export default {
   products: {
     list: () => Ibtkar.get('products'),
+    details: ({ productId }) => Ibtkar.get(`products/${productId}`),
   }
 };

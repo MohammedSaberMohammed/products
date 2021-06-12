@@ -57,13 +57,13 @@ class ProductQuantityControler extends Component {
       <FormLayout>
         <FormItem fullWidth>
           <div className='d-flex justify-content-between align-items-center'>
-              <TextField
-                type='number'
-                min={1}
-                value={this.value}
-                onChange={this.update}
-              />
-              {/* To Do : add + - buttons to add or subtract */}
+            <TextField
+              type='number'
+              min={1}
+              value={this.value}
+              onChange={this.update}
+            />
+            {/* To Do : add + - buttons to add or subtract */}
           </div>
         </FormItem>
       </FormLayout>

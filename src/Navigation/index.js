@@ -28,7 +28,7 @@ function AppNavigation({ auth }) {
 
   return (
     <ConnectedRouter history={history}>
-      <Layout fullWidth>
+      <Layout>
         <Switch>
           {RoutesConfiguration({
             isAuthenticated,

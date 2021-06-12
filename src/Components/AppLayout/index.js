@@ -11,12 +11,12 @@ class AppLayout extends Component {
 
     return (
       <div className={'app-layout'}>
+        <Header />
 
         <Container
           fluid={fullWidth}
           className={'p-0'}
         >
-          <Header />
           {children}
         </Container>
 

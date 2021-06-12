@@ -10,7 +10,7 @@ import Navigate from '../../../Services/Navigate';
 // Components
 import Entity from '../../../Components/Entity';
 import EmptyPlaceholder from '../../../Components/EmptyPlaceholder';
-import { FormLayout, FormItem } from '../../../Components/Form';
+import { FormLayout, FormItem, FormContainer } from '../../../Components/Form';
 import CardLayout from '../../../Components/Card';
 
 class ProductList extends Component {
@@ -45,7 +45,6 @@ class ProductList extends Component {
 
   isProductAddedToCart = id => {
     const { products } = this.props.productsStore;
-    console.log(products)
     // check if
     return products.findIndex(product => product.id === id) > -1;
   }
@@ -75,12 +74,11 @@ class ProductList extends Component {
                 </FormItem>
 
                 {products.map(product => (
-                  <FormItem fullWidth={isListView} lg={3} xl={3}>
+                  <FormItem fullWidth={isListView} lg={4} xl={4}>
                     <CardLayout 
                       key={product.id}
                       imgSrc={product.image}
                       title={product.title}
-                      multiSubtitle={[`Category: ${product.category}`, `Price: ${product.price} $`]}
                       cardStyles='white_background'
                       footer={(
                         <>
@@ -89,7 +87,7 @@ class ProductList extends Component {
                           variant={'outline-secondary'}
                           className='mr-2'
                         >
-                          {'Details'}
+                          Details
                         </Button>
 
                         <Button 
@@ -100,7 +98,28 @@ class ProductList extends Component {
                         </Button>
                         </>
                       )}
-                    />
+                    >
+                      <FormContainer>
+                        <FormItem 
+                          fullWidth 
+                          spacing={0} 
+                          className='d-flex align-items-center'
+                        >
+                          <h6 className='theme_color m-0 mr-2'>Category:</h6>
+                          <p className='m-0 mr-2'>{product.category}</p>
+                        </FormItem>
+
+                        <FormItem 
+                          fullWidth 
+                          spacing={0} 
+                          className='d-flex align-items-center'
+                        >
+                          <h6 className='theme_color m-0 mr-2'>Price:</h6>
+                          <p className='m-0 mr-2'>{product.price}</p>
+                          <span className='currency'>$</span>
+                        </FormItem>
+                      </FormContainer>
+                    </CardLayout>
                   </FormItem>
                 ))}
               </>

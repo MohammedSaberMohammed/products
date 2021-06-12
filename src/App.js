@@ -6,7 +6,7 @@ import createStore from './Redux';
 import AppNavigation from './Navigation';
 // Styles
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Scss/main.scss';
+import './Sass/main.scss';
 
 const store = createStore();
 
