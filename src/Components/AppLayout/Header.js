@@ -56,6 +56,7 @@ class Header extends Component {
         <Navbar.Collapse id="responsive-navbar-nav" >
           {isAuthenticated && (
             <Nav className="mr-auto">
+              <Nav.Link onClick={() => Navigate.go('/')}>Home</Nav.Link>
               <NavDropdown 
                 title={(
                   <div className='d-flex align-items-baseline'>
