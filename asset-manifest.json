@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/products/static/css/main.5b8295a2.chunk.css",
-    "main.js": "/products/static/js/main.0eb21232.chunk.js",
-    "main.js.map": "/products/static/js/main.0eb21232.chunk.js.map",
-    "runtime-main.js": "/products/static/js/runtime-main.60192ec8.js",
-    "runtime-main.js.map": "/products/static/js/runtime-main.60192ec8.js.map",
-    "static/css/2.aa255a9e.chunk.css": "/products/static/css/2.aa255a9e.chunk.css",
-    "static/js/2.a9e4a259.chunk.js": "/products/static/js/2.a9e4a259.chunk.js",
-    "static/js/2.a9e4a259.chunk.js.map": "/products/static/js/2.a9e4a259.chunk.js.map",
-    "index.html": "/products/index.html",
-    "static/css/2.aa255a9e.chunk.css.map": "/products/static/css/2.aa255a9e.chunk.css.map",
-    "static/css/main.5b8295a2.chunk.css.map": "/products/static/css/main.5b8295a2.chunk.css.map",
-    "static/js/2.a9e4a259.chunk.js.LICENSE.txt": "/products/static/js/2.a9e4a259.chunk.js.LICENSE.txt",
-    "static/media/1.jpg": "/products/static/media/1.5c24c26c.jpg",
-    "static/media/circular-indicator.gif": "/products/static/media/circular-indicator.9cd7d656.gif",
-    "static/media/delete.svg": "/products/static/media/delete.2151b4b6.svg"
+    "main.css": "/static/css/main.5b8295a2.chunk.css",
+    "main.js": "/static/js/main.6eb6e88a.chunk.js",
+    "main.js.map": "/static/js/main.6eb6e88a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.ea2220cd.js",
+    "runtime-main.js.map": "/static/js/runtime-main.ea2220cd.js.map",
+    "static/css/2.aa255a9e.chunk.css": "/static/css/2.aa255a9e.chunk.css",
+    "static/js/2.48cf11b8.chunk.js": "/static/js/2.48cf11b8.chunk.js",
+    "static/js/2.48cf11b8.chunk.js.map": "/static/js/2.48cf11b8.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.aa255a9e.chunk.css.map": "/static/css/2.aa255a9e.chunk.css.map",
+    "static/css/main.5b8295a2.chunk.css.map": "/static/css/main.5b8295a2.chunk.css.map",
+    "static/js/2.48cf11b8.chunk.js.LICENSE.txt": "/static/js/2.48cf11b8.chunk.js.LICENSE.txt",
+    "static/media/1.jpg": "/static/media/1.5c24c26c.jpg",
+    "static/media/circular-indicator.gif": "/static/media/circular-indicator.9cd7d656.gif",
+    "static/media/delete.svg": "/static/media/delete.2151b4b6.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.60192ec8.js",
+    "static/js/runtime-main.ea2220cd.js",
     "static/css/2.aa255a9e.chunk.css",
-    "static/js/2.a9e4a259.chunk.js",
+    "static/js/2.48cf11b8.chunk.js",
     "static/css/main.5b8295a2.chunk.css",
-    "static/js/main.0eb21232.chunk.js"
+    "static/js/main.6eb6e88a.chunk.js"
   ]
 }
