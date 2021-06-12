@@ -27,7 +27,7 @@ export const anonymousStructure = {
   routes: [
     { path: '/', component: <ProductsList /> },
     { path: '/home', component: <ProductsList /> },
-    { path: '/products', component: <ProductsList /> },
+    // { path: '/products', component: <ProductsList /> },
     { path: '/product/:id', component: <ProductDetails /> },
     { path: '/404', component: <PageNotFound /> },
   ]
