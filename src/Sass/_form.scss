@@ -61,3 +61,114 @@
 .card-header {
   border: none
 }
+
+// ========================== Phone Number ===============================
+.react-tel-input {
+  outline: none;
+
+  .phone-number-input {
+    width: 100%;
+    border-radius: 30px;
+    border: solid 1px $input_border_color;
+    height: 45px;
+    font-size: 15px;
+
+    &:focus {
+      outline: none !important;
+      border-color: $input_border_color;
+      box-shadow: 0px 0px 10px 2px rgba($color: $theme-color, $alpha: 0.2);
+    }
+
+    &:disabled {
+      border-color: #ececec;
+      background-color: #ececec;
+
+      & + .flag-dropdown {
+        .arrow {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .flag-dropdown-botton {
+    outline: none;
+
+    .selected-flag:focus:before,
+    .selected-flag.open:before {
+      border: none;
+      box-shadow: none;
+    }
+
+    .flag-dropdown-container {
+      direction: rtl;
+      transition: all .5s ease-in-out;
+      max-height: 350px;
+
+
+      & > * {
+        // font-family: $default_font;
+      }
+
+      &::-webkit-scrollbar {
+        width: 0.70em;
+        z-index: -1;
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: rgba($color: black, $alpha: 0.2);
+        border-radius: 0.5em;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $theme-color;
+        border-radius: 0.5em;
+      }
+
+      .search {
+        background-color: $grey-color;
+        box-shadow: 0px 2px 5px #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 10px;
+
+        // .search-emoji {
+        // }
+
+        .search-box {
+          margin-left: 0;
+          flex: 1;
+          min-width: 0;
+        }
+      }
+
+      .country {
+        border-bottom: 1px dashed $theme-color;
+        padding-top: 15px;
+        padding-bottom: 15px;
+
+        .country-name {
+          margin-right: 0;
+          margin-left: 6px;
+        }
+
+        &:hover {
+          background-color: $light-theme-color;
+        }
+
+        &:focus {
+          outline: none
+        }
+      }
+
+      .country.highlight {
+        background-color: $theme-color;
+
+        & > * {
+          color: #fff
+        }
+      }
+    }
+  }
+}

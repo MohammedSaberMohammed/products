@@ -64,7 +64,7 @@ function PhoneNumber({
       }
     });
     
-    return () => window.removeEventListener('resize');
+    return () => window.removeEventListener('resize', null);
   }, []);
 
   const inputParentWidth = useMemo(() => { 
@@ -115,7 +115,8 @@ function PhoneNumber({
         )}
         <PhoneInput
           country={initialCountry}
-          localization={ar}
+          // In case of Arabic
+          // localization={ar}
           value={inputFormattedValue}
           // value={this.state.phone}
           specialLabel={specialLabel}

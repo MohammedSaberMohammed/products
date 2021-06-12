@@ -15,6 +15,8 @@ const { Types, Creators } = createActions({
   subtract: [ 'id' ],
   remove: [ 'id' ],
   update: [ 'id', 'quantity' ],
+
+  reset: null,
 }, {
   prefix: 'Products/',
 });
@@ -62,6 +64,8 @@ export const updateProduct = (state, { id, quantity }) => {
   return state.merge({ products });
 };
 
+export const reset = () => INITIAL_STATE;
+
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -69,4 +73,6 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SUBTRACT]: subtractProduct,
   [Types.REMOVE]: removeProduct,
   [Types.UPDATE]: updateProduct,
+
+  [Types.RESET]: reset,
 });

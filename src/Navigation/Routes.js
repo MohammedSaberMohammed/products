@@ -6,6 +6,7 @@ import ProductDetails from '../Screens/Products/Details';
 import PageNotFound from '../Screens/PageNotFound';
 // logedin Routes
 import Checkout from '../Screens/Checkout';
+import Contact from '../Screens/Contact';
 /*  Route Model */
 /**
  * path: string
@@ -18,6 +19,7 @@ export const authorizedStructure = {
   fallbackPath: '/home',
   routes: [
     { path: '/checkout', component: <Checkout /> },
+    { path: '/contact', component: <Contact /> },
   ]
 };
 
