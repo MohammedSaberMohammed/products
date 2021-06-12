@@ -27,7 +27,7 @@ function CardLayout({
       border={border}
       text={textColor}
       onClick={onClick}
-      className={`overflow-hidden light-shadow ${centeredText ? 'text-center' : ''} ${cardStyles}`}
+      className={`overflow-hidden background-card-shadow ${centeredText ? 'text-center' : ''} ${cardStyles}`}
     >
       {imgSrc && <Card.Img className='card-image' variant={imgPosition} src={imgSrc} />}
       {header && <Card.Header as={header.as} className={header.className || ''}>{header.custom ? header.custom : header.text}</Card.Header>}

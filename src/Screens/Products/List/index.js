@@ -62,11 +62,11 @@ class ProductList extends Component {
         render={store => (
           <FormLayout loading={store.loading}>
             {!products.length ? 
-              <EmptyPlaceholder text={'No Products Found'} />
+              <EmptyPlaceholder width={50} text={'No Products Found'} />
               :
               <>
                 <FormItem fullWidth>
-                  <h3>All Products</h3>
+                  <h4 className='theme_color'>All Products</h4>
                   <Button 
                     onClick={this.toggleView}
                   >
@@ -81,15 +81,24 @@ class ProductList extends Component {
                       imgSrc={product.image}
                       title={product.title}
                       multiSubtitle={[`Category: ${product.category}`, `Price: ${product.price} $`]}
-                      cardStyles='cursor-pointer'
-                      onClick={() => Navigate.go(`/product/${product.id}`)}
+                      cardStyles='white_background'
                       footer={(
+                        <>
+                        <Button 
+                          onClick={() => Navigate.go(`/product/${product.id}`)}
+                          variant={'outline-secondary'}
+                          className='mr-2'
+                        >
+                          {'Details'}
+                        </Button>
+
                         <Button 
                           onClick={e => this.handleAddToCart(e, product)}
                           variant={this.isProductAddedToCart(product.id) ? 'outline-danger' : 'outline-primary'}
                         >
                           {this.isProductAddedToCart(product.id) ? 'Remove From Cart' : 'Add To Cart'}
                         </Button>
+                        </>
                       )}
                     />
                   </FormItem>

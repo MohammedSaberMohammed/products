@@ -14,3 +14,28 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+.white_background {
+  width: 100%;
+  height: auto;
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 30px;
+}
+
+.theme_color {
+  color: $theme-color
+}
+
+.theme-container {
+  background-color: white;
+  border-radius: 40px;
+  box-shadow: 0px 15px 20px #00000012;
+  border: 1px solid $outlined_border
+}
+
+.theme-container-text-wrapper {
+  color: #404040;
+  text-align: justify;
+  padding: 35px;
+}

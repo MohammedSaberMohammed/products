@@ -38,7 +38,7 @@ class Header extends Component {
     console.log('isAuthenticated', this.isAuthenticated);
     return (
       <Navbar className='header-navbar' collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand  onClick={() => Navigate.go('/')}>
+        <Navbar.Brand className={`${isAuthenticated? 'cursor-pointer' : ''}`} onClick={() => Navigate.go('/')}>
           {isAuthenticated && (
             <img
               alt=""
