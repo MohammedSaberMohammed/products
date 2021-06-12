@@ -1,0 +1,8 @@
+.light-shadow {
+  transition: all .2s ease-in-out;
+  box-shadow: 3px 3px 5px #ccc, -3px -3px 5px #ccc;
+
+  &:hover {
+    box-shadow: 2px 2px 10px #ccc, -2px -2px 10px #ccc;
+  }
+}

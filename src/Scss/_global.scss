@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.ellipses {
+  text-overflow: ellipsis;
+
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}
