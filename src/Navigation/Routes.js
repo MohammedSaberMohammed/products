@@ -7,6 +7,7 @@ import PageNotFound from '../Screens/PageNotFound';
 // logedin Routes
 import Checkout from '../Screens/Checkout';
 import Contact from '../Screens/Contact';
+import MyProducts from '../Screens/MyProducts';
 /*  Route Model */
 /**
  * path: string
@@ -20,6 +21,7 @@ export const authorizedStructure = {
   routes: [
     { path: '/products/checkout', component: <Checkout /> },
     { path: '/products/contact', component: <Contact /> },
+    { path: '/products/mine', component: <MyProducts /> },
   ]
 };
 

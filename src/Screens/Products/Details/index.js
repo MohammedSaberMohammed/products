@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+// Configs
+import { FireBaseDB } from '../../../Configs';
 
 import get from 'lodash/get';
 
@@ -10,14 +13,51 @@ import { FormLayout, FormItem, FormContainer } from '../../../Components/Form';
 
 class ProductList extends Component {
   state = {
-    details: {}
+    details: {},
+    firebaseLoading: false
   };
 
   componentDidMount() {
-    this.productDetailsEntity.get({ productId: this.productId });
+    if(this.isDummyFetch) {
+      this.productDetailsEntity.get({ productId: this.productId });
+    } else {
+      this.firebaseFetch();
+    }
   }
 
   onEntityReceived = details => this.setState({ details });
+
+  firebaseFetch() {
+    this.setState({ firebaseLoading: true }, () => {
+      FireBaseDB
+      .collection('products')
+      .where('id', '==', +this.productId)
+      .get()
+      .then(snapshot => {
+        const products = [];
+
+        snapshot.docs.forEach(doc => {
+          const row = doc.data();
+          console.log('row', row)
+          if(Object.keys(row).length) {
+
+            products.push(row);
+          }
+        });
+        console.log('products', products);
+        // assuming there is only 1 record
+        this.setState({ details: products[0] });
+      })
+      .catch(err => console.log(err.message))
+      .finally(() => this.setState({ firebaseLoading: false }))
+    });
+  }
+
+  get isDummyFetch() {
+    const { layout } = this.props;
+
+    return layout.integrationMethod === 'Dummy'; 
+  }
 
   get productId() {
     const { match } = this.props;
@@ -26,8 +66,9 @@ class ProductList extends Component {
   }
 
   render() {
-    const { details } = this.state;
-    const isValidDetails = Object.keys(details).length > 0;
+    const { details, firebaseLoading } = this.state;
+    console.log(details)
+    const isValidDetails = !firebaseLoading ? Object.keys(details).length > 0 : false;
 
     return (
       <Entity 
@@ -35,7 +76,7 @@ class ProductList extends Component {
         entityRef={ref => this.productDetailsEntity = ref}
         onEntityReceived={this.onEntityReceived}
         render={store => (
-          <FormLayout loading={store.loading}>
+          <FormLayout loading={store.loading || firebaseLoading}>
             {!isValidDetails ? 
               <EmptyPlaceholder width={50} text={'No Details Found'} />
               :
@@ -103,4 +144,8 @@ class ProductList extends Component {
   }
 }
 
-export default ProductList
+const mapStateToProps = store => ({
+  layout: store?.layout
+});
+
+export default connect(mapStateToProps)(ProductList);

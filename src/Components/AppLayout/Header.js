@@ -35,7 +35,6 @@ class Header extends Component {
     const { auth } = this.props;
     const { profile } = auth || {};
 
-    console.log('isAuthenticated', this.isAuthenticated);
     return (
       <Navbar className='header-navbar' collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Brand className={`${isAuthenticated? 'cursor-pointer' : ''}`} onClick={() => Navigate.go('/products/')}>
@@ -57,6 +56,7 @@ class Header extends Component {
           {isAuthenticated && (
             <Nav className="mr-auto">
               <Nav.Link onClick={() => Navigate.go('/products/')}>Home</Nav.Link>
+              <Nav.Link onClick={() => Navigate.go('/products/mine')}>MyProducts</Nav.Link>
               <NavDropdown 
                 title={(
                   <div className='d-flex align-items-baseline'>

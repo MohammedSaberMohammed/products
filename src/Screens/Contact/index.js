@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 // Actions
 import ProductsActions from '../../Redux/ActionsAndReducers/Products';
+import LayoutActions from '../../Redux/ActionsAndReducers/Layout';
 // Lodash
 import map from "lodash/map";
 import set from "lodash/set";
@@ -61,6 +62,7 @@ class Contact extends Component {
 
     if(this.isFormValid) {
       if(!this.isDummyIntegration) {
+        this.props.updateUserEmail(this.formValues.email);
         this.firebaseSubmit();
       } else {
         this.afterPost();
@@ -78,15 +80,13 @@ class Contact extends Component {
         ...this.formValues,
         products 
       })
-      .then((docRef) => {console.log('docRef.id', docRef.id); 
-        // this.afterPost()
-      })
+      .then((docRef) => this.afterPost('/products/mine'))
       .catch(err => console.log(err.message))
       .finally(() => this.setState({ firebaseLoading: false }))
     });
   }
 
-  afterPost = () => {
+  afterPost = (redirectTo = '/products') => {
     const { resetProducts } = this.props;
       
     resetProducts();
@@ -94,7 +94,7 @@ class Contact extends Component {
     setTimeout(() => {
       toast.success('Submitted Successfully', ToastConfig());
 
-      Navigate.go('/products')
+      Navigate.go(redirectTo)
     })
   }
   // Implemented but not used
@@ -271,7 +271,8 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  resetProducts: () => dispatch(ProductsActions.reset())
+  resetProducts: () => dispatch(ProductsActions.reset()),
+  updateUserEmail: email => dispatch(LayoutActions.updateEmail(email))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Contact);

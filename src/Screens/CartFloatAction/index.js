@@ -13,7 +13,7 @@ import Navigate from '../../Services/Navigate';
 import ProductView from './ProductView';
 import EmptyPlaceholder from '../../Components/EmptyPlaceholder';
 import Modal from '../../Components/Modal';
-import { FormLayout } from '../../Components/Form';
+import { FormLayout, FormItem } from '../../Components/Form';
 
 
 class CartFloatAction extends Component {
@@ -50,7 +50,11 @@ class CartFloatAction extends Component {
     return(
       <div>
         <Modal
-          title={'Shopping Cart'}
+          title={<div className='d-flex justify-content-between'>
+            <h3>Shopping Cart</h3>
+            {!!products.length && <p className='p-0 m-0'>Total is: <span className='theme_color'>{this.totaPrice}</span><span className='currency'>$</span></p>}
+          </div>}
+          titleStyles=' flex-grow-1'
           show={openDialog}
           handleClose={this.closeDialog}
           backdrop
