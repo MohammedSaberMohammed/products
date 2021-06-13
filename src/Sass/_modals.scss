@@ -1,0 +1,30 @@
+.drawer-modal {
+  width: 50% !important;
+  max-width: 100% !important;
+  min-height: 100% !important;
+  margin: 0 !important;
+  transform: translate(-100%, 0);
+  transition: all .4s ease-in-out;
+
+  .modal-content {
+    min-height: 100%
+  }
+
+  &.show{
+    .modal-dialog{
+      // transform: translate(10%, 0);
+    }
+  }
+
+  @media(max-width: 768px) {
+    width: 80% !important;
+  }
+  @media(max-width: 500px) {
+    width: 90% !important;
+  }
+}
+
+
+#drawer-image {
+  height: 147px !important
+}

@@ -36,6 +36,7 @@ class ModalViewer extends React.Component {
     return (
       <div style={{ position: 'relative' }} >
         <Modal
+
           show={show}
           size={size}
           centered={centered}
@@ -45,7 +46,8 @@ class ModalViewer extends React.Component {
           scrollable={scrollable}
           dialogClassName={dialogClassName}
           backdropClassName={backdropClassName}
-          className={dialogClassName}
+          c
+          // className={dialogClassName}
         >
           {isLoading && (
             <div className={'attached-loader'}>

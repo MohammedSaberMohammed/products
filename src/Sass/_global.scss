@@ -3,6 +3,12 @@
   padding: 0
 }
 
+#shopping-cart {
+  left: 35px;
+  position: fixed;
+  bottom: 30px;
+}
+
 .app-layout {
   display: flex;
   flex-direction: column;

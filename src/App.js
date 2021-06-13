@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 
 // Components
 import AppNavigation from './Navigation';
+import CartFloatAction from './Screens/CartFloatAction';
 // Styles
 import './Sass/main.scss';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,6 +19,9 @@ function App() {
   return (
     <Provider store={store}>
       <ToastContainer />
+
+      <CartFloatAction />
+      
       <AppNavigation />
     </Provider>
   );

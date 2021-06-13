@@ -47,9 +47,11 @@ class ProductQuantityControler extends Component {
   }
 
   render() {
+    const { spacing } = this.props;
+
     return(
       <FormLayout>
-        <FormItem fullWidth>
+        <FormItem fullWidth spacing={spacing}>
           <div className='d-flex justify-content-between align-items-center'>
             <TextField
               type='number'
