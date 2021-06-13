@@ -7,6 +7,7 @@
     "apisauce": "^2.1.1",
     "bootstrap": "^4.6.0",
     "connected-react-router": "^6.9.1",
+    "firebase": "^8.6.7",
     "history": "^4.10.1",
     "node-sass": "^6.0.0",
     "protected-react-routes-generator": "^1.0.3",
@@ -16,6 +17,7 @@
     "react-phone-input-2": "^2.14.0",
     "react-redux": "^7.2.4",
     "react-scripts": "4.0.3",
+    "react-select": "^4.3.1",
     "react-toastify": "^7.0.4",
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.1.3"

@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // Actions
 import ProductsActions from '../../Redux/ActionsAndReducers/Products'
-// Bootstrap
-import Button from 'react-bootstrap/Button';
 // Components
 import { FormLayout, FormItem } from '../Form';
 import { TextField } from '../Form/Controls';
-// Services
-import { setIcon } from '../../Services/Utils';
 
 class ProductQuantityControler extends Component {
   remove = id => {
@@ -51,8 +47,6 @@ class ProductQuantityControler extends Component {
   }
 
   render() {
-    const { productsStore, product } = this.props;
-    console.log('this.value', this.value)
     return(
       <FormLayout>
         <FormItem fullWidth>

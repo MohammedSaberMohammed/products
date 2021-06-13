@@ -9,6 +9,8 @@ import reduce from "lodash/reduce";
 import isEmpty from "lodash/isEmpty";
 import filter from "lodash/filter";
 import get from "lodash/get";
+// Configs
+import { FireBaseDB } from '../../Configs';
 // Components
 import { FormLayout, FormItem } from '../../Components/Form';
 import { TextField, PhoneNumberField } from '../../Components/Form/Controls';
@@ -54,20 +56,46 @@ class Contact extends Component {
     const { formValidatedWithSubmit } = this.state;
 
     if(!formValidatedWithSubmit) {
-      this.setState({ formValidatedWithSubmit: true })
+      this.setState({ formValidatedWithSubmit: true });
     }
 
     if(this.isFormValid) {
-      const { resetProducts } = this.props;
-      
-      resetProducts();
-
-      setTimeout(() => {
-        toast.success('Submitted Successfully', ToastConfig());
-
-        Navigate.go('/products')
-      })
+      if(!this.isDummyIntegration) {
+        this.firebaseSubmit();
+      } else {
+        this.afterPost();
+      }
     }
+  }
+
+  firebaseSubmit = () => {
+    const { productsStore: { products } } = this.props;
+
+    this.setState({ firebaseLoading: true }, () => {
+      FireBaseDB
+      .collection('orders')
+      .add({
+        ...this.formValues,
+        products 
+      })
+      .then((docRef) => {console.log('docRef.id', docRef.id); 
+        // this.afterPost()
+      })
+      .catch(err => console.log(err.message))
+      .finally(() => this.setState({ firebaseLoading: false }))
+    });
+  }
+
+  afterPost = () => {
+    const { resetProducts } = this.props;
+      
+    resetProducts();
+
+    setTimeout(() => {
+      toast.success('Submitted Successfully', ToastConfig());
+
+      Navigate.go('/products')
+    })
   }
   // Implemented but not used
   updateFormValues(values) {
@@ -119,6 +147,12 @@ class Contact extends Component {
     if(form[fieldName]) {
       return get(form, `${fieldName}.errors.0.message`, null);
     }
+  }
+
+  get isDummyIntegration() {
+    const { layout } = this.props;
+
+    return layout.integrationMethod === 'Dummy'; 
   }
 
   get isFormValid() {
@@ -231,8 +265,13 @@ Contact.propTypes = {};
 
 Contact.defaultProps = {};
 
+const mapStateToProps = store => ({
+  productsStore: store.products || {},
+  layout: store?.layout
+});
+
 const mapDispatchToProps = dispatch => ({
   resetProducts: () => dispatch(ProductsActions.reset())
 });
 
-export default connect(null, mapDispatchToProps)(Contact);
+export default connect(mapStateToProps, mapDispatchToProps)(Contact);

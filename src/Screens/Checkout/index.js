@@ -8,6 +8,8 @@ import Button from 'react-bootstrap/Button';
 // Services
 import Navigate from '../../Services/Navigate';
 import { setIcon } from '../../Services/Utils';
+import { FavoriteViews } from '../../Services/StaticLookups';
+import { StaticLookupSelectField } from '../../Components/Form/Controls';
 // Components
 import ProductView from './ProductView';
 import EmptyPlaceholder from '../../Components/EmptyPlaceholder';
@@ -28,10 +30,10 @@ class ProductList extends Component {
     this.setState({ openDialog: false })
   }
 
-  toggleView = () => {
-    const { toggleView } = this.props;
-
-    toggleView();
+  updateView = (name, value) => {
+    const { updateFavoriteView } = this.props;
+    console.log(value)
+    updateFavoriteView(value);
   }
 
   removeProduct = id => {
@@ -46,10 +48,17 @@ class ProductList extends Component {
     return products.reduce((result, { quantity, price }) => result += price * quantity, 0)
   }
 
+  get isListView() {
+    const { selectedView } = this.props;
+
+    return selectedView === 'List';
+  }
+
   render() {
     const { products } = this.props.productsStore;
-    const { isListView } = this.props;
+    const { selectedView } = this.props;
     const { openDialog } = this.state;
+    const { isListView } = this;
 
     return (
       <FormLayout>
@@ -65,7 +74,7 @@ class ProductList extends Component {
                 this.closeDialog()
                 Navigate.go(`/products/contact`)
               }}
-              variant={'outline-danger'}
+              variant={'danger'}
             >
               Total price is: {this.totaPrice} $ Order Now!
             </Button>
@@ -90,11 +99,17 @@ class ProductList extends Component {
                   {'Review Order!'}
                 </Button>
               </div>
-              <Button 
-                onClick={this.toggleView}
-              >
-                {isListView ? 'List' : 'Grid'}
-              </Button>
+
+              <FormItem spacing={1}>
+                <StaticLookupSelectField
+                  name='favoriteView'
+                  label={'View As'}
+                  lookup={FavoriteViews}
+                  onChange={this.updateView}
+                  value={selectedView}
+                  clearable={false}
+                />
+              </FormItem>
             </FormItem>
 
             {products.map(product => (
@@ -147,14 +162,12 @@ class ProductList extends Component {
 }
 
 const mapStateToProps = store => ({
-  // when finish store part
   productsStore: store.products || {},
-  isListView: store?.layout?.isListView || false
+  selectedView: store?.layout?.selectedView
 });
 
 const mapDispatchToProps = dispatch => ({
-  // when finish store part
-  toggleView: () => dispatch(LayoutActions.toggleView()),
+  updateFavoriteView: view => dispatch(LayoutActions.updateView(view)),
   addProduct: product => dispatch(ProductsActions.add(product)),
   removeProduct: id => dispatch(ProductsActions.remove(id)),
 });

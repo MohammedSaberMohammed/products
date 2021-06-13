@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {
   useMemo, useEffect, useRef 
 } from 'react';
@@ -5,7 +6,7 @@ import PropTypes from 'prop-types';
 // Lib
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/bootstrap.css';
-import ar from 'react-phone-input-2/lang/ar.json';
+// import ar from 'react-phone-input-2/lang/ar.json';
 // Bootstrap
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
