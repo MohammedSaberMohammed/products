@@ -48,7 +48,7 @@ class ProductList extends Component {
       // call firebase here
       this.setState({ firebaseLoading: true }, () => {
         FireBaseDB
-        .collection('orders')
+        .collection('products')
         .get()
         .then(snapshot => {
           const products = [];
@@ -79,7 +79,7 @@ class ProductList extends Component {
 
   updateIntegrationMethod = (fieldName, value) => {
     const { updateIntegrationMethod } = this.props;
-    console.log(value)
+
     updateIntegrationMethod(value);
   }
 
