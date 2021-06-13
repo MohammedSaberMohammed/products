@@ -38,7 +38,7 @@ class Header extends Component {
     console.log('isAuthenticated', this.isAuthenticated);
     return (
       <Navbar className='header-navbar' collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand className={`${isAuthenticated? 'cursor-pointer' : ''}`} onClick={() => Navigate.go('/')}>
+        <Navbar.Brand className={`${isAuthenticated? 'cursor-pointer' : ''}`} onClick={() => Navigate.go('/products/')}>
           {isAuthenticated && (
             <img
               alt=""
@@ -56,7 +56,7 @@ class Header extends Component {
         <Navbar.Collapse id="responsive-navbar-nav" >
           {isAuthenticated && (
             <Nav className="mr-auto">
-              <Nav.Link onClick={() => Navigate.go('/')}>Home</Nav.Link>
+              <Nav.Link onClick={() => Navigate.go('/products/')}>Home</Nav.Link>
               <NavDropdown 
                 title={(
                   <div className='d-flex align-items-baseline'>
@@ -71,7 +71,7 @@ class Header extends Component {
                 )} 
                 id="collasible-shop-dropdown"
               >
-                <NavDropdown.Item onClick={() => Navigate.go('/checkout')}>Selected Products</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => Navigate.go('/products/checkout')}>Selected Products</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           )}

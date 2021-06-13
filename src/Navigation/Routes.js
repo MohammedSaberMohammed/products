@@ -16,19 +16,17 @@ import Contact from '../Screens/Contact';
  * showRouteIf: Boolean ----> To decide when to show/hide the route
 */
 export const authorizedStructure = {
-  fallbackPath: '/home',
+  fallbackPath: '/products',
   routes: [
-    { path: '/checkout', component: <Checkout /> },
-    { path: '/contact', component: <Contact /> },
+    { path: '/products/checkout', component: <Checkout /> },
+    { path: '/products/contact', component: <Contact /> },
   ]
 };
 
 export const anonymousStructure = {
   routes: [
-    { path: '/', component: <ProductsList /> },
-    { path: '/home', component: <ProductsList /> },
     { path: '/products', component: <ProductsList /> },
-    { path: '/product/:id', component: <ProductDetails /> },
-    { path: '/404', component: <PageNotFound /> },
+    { path: '/products/product/:id', component: <ProductDetails /> },
+    { path: '/products/404', component: <PageNotFound /> },
   ]
 };

@@ -83,7 +83,7 @@ class ProductList extends Component {
                       footer={(
                         <>
                         <Button 
-                          onClick={() => Navigate.go(`/product/${product.id}`)}
+                          onClick={() => Navigate.go(`/products/product/${product.id}`)}
                           variant={'outline-secondary'}
                           className='mr-2'
                         >

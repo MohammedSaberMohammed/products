@@ -65,7 +65,7 @@ class Contact extends Component {
       setTimeout(() => {
         toast.success('Submitted Successfully', ToastConfig());
 
-        Navigate.go('/home')
+        Navigate.go('/products')
       })
     }
   }

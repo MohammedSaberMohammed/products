@@ -63,7 +63,7 @@ class ProductList extends Component {
               block
               onClick={() => {
                 this.closeDialog()
-                Navigate.go(`/contact`)
+                Navigate.go(`/products/contact`)
               }}
               variant={'outline-danger'}
             >
@@ -120,7 +120,7 @@ class ProductList extends Component {
                     </Button>
 
                     <Button 
-                      onClick={() => Navigate.go(`/product/${product.id}`)}
+                      onClick={() => Navigate.go(`/products/product/${product.id}`)}
                       variant={'outline-secondary'}
                       className='mr-2'
                     >
